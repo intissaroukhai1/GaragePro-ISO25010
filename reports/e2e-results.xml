@@ -1,0 +1,38 @@
+<testsuites id="" name="" tests="16" failures="0" skipped="0" errors="0" time="27.924851999999998">
+<testsuite name="garagepro.e2e.spec.js" timestamp="2026-11-23T11:15:23.180Z" hostname="chromium" tests="8" failures="0" skipped="0" time="10.39" errors="0">
+<testcase name="E2E-01 - Formulaire de connexion visible" classname="garagepro.e2e.spec.js" time="3.588">
+</testcase>
+<testcase name="E2E-02 - Refus d’un mauvais mot de passe" classname="garagepro.e2e.spec.js" time="1.065">
+</testcase>
+<testcase name="E2E-03 - Connexion ADMIN et accès aux pages administrateur" classname="garagepro.e2e.spec.js" time="0.924">
+</testcase>
+<testcase name="E2E-04 - Le CLIENT ne voit pas la création d’intervention" classname="garagepro.e2e.spec.js" time="0.846">
+</testcase>
+<testcase name="E2E-05 - Le CLIENT peut ouvrir le formulaire véhicule" classname="garagepro.e2e.spec.js" time="1.044">
+</testcase>
+<testcase name="E2E-06 - Le CLIENT peut ouvrir un rendez-vous" classname="garagepro.e2e.spec.js" time="1.053">
+</testcase>
+<testcase name="E2E-07 - Le MÉCANICIEN voit ses menus sans création intervention" classname="garagepro.e2e.spec.js" time="0.902">
+</testcase>
+<testcase name="E2E-08 - Déconnexion depuis le compte ADMIN" classname="garagepro.e2e.spec.js" time="0.968">
+</testcase>
+</testsuite>
+<testsuite name="garagepro.e2e.spec.js" timestamp="2026-11-23T11:15:23.180Z" hostname="firefox" tests="8" failures="0" skipped="0" time="13.311" errors="0">
+<testcase name="E2E-01 - Formulaire de connexion visible" classname="garagepro.e2e.spec.js" time="2.461">
+</testcase>
+<testcase name="E2E-02 - Refus d’un mauvais mot de passe" classname="garagepro.e2e.spec.js" time="1.753">
+</testcase>
+<testcase name="E2E-03 - Connexion ADMIN et accès aux pages administrateur" classname="garagepro.e2e.spec.js" time="2.016">
+</testcase>
+<testcase name="E2E-04 - Le CLIENT ne voit pas la création d’intervention" classname="garagepro.e2e.spec.js" time="1.423">
+</testcase>
+<testcase name="E2E-05 - Le CLIENT peut ouvrir le formulaire véhicule" classname="garagepro.e2e.spec.js" time="1.53">
+</testcase>
+<testcase name="E2E-06 - Le CLIENT peut ouvrir un rendez-vous" classname="garagepro.e2e.spec.js" time="1.478">
+</testcase>
+<testcase name="E2E-07 - Le MÉCANICIEN voit ses menus sans création intervention" classname="garagepro.e2e.spec.js" time="1.309">
+</testcase>
+<testcase name="E2E-08 - Déconnexion depuis le compte ADMIN" classname="garagepro.e2e.spec.js" time="1.341">
+</testcase>
+</testsuite>
+</testsuites>

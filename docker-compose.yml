@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: garagepro
+      POSTGRES_USER: garagepro
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-garagepro_local_password}
+    volumes:
+      - garagepro_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U garagepro -d garagepro"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://garagepro:${POSTGRES_PASSWORD:-garagepro_local_password}@db:5432/garagepro
+      JWT_SECRET: ${JWT_SECRET:-development-secret-change-before-production-1234}
+      SEED_DEMO: ${SEED_DEMO:-true}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-Demo12345!}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:3000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+volumes:
+  garagepro_db:

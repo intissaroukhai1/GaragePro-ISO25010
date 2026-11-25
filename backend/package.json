@@ -1,0 +1,11 @@
+{
+  "name": "garagepro-e2e-tests",
+  "private": true,
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:chrome": "playwright test --project=chromium",
+    "test:e2e:firefox": "playwright test --project=firefox",
+    "test:e2e:report": "playwright show-report reports/e2e-html"
+  },
+  "devDependencies": { "@playwright/test": "^1.58.0" }
+}

@@ -1,0 +1,16 @@
+ID;Exigence cahier des charges;Implémentation;Preuve de test;Statut
+F-01;Authentification et 3 rôles;User + JWT + require;À exécuter;Implémenté / non testé
+F-02;Au moins 4 entités liées et CRUD;Vehicle Part Mechanic Appointment Intervention;À exécuter;Implémenté / non testé
+F-03;Workflow à statuts;Intervention + TRANSITIONS;À exécuter;Implémenté / non testé
+F-04;Tableau de bord agrégé;GET /api/dashboard;À exécuter;Implémenté / non testé
+F-05;Recherche et filtrage;GET /api/vehicles et /api/interventions et /api/parts;À exécuter;Implémenté / non testé
+F-06;Journal d'audit;AuditLog et GET /api/audit;À exécuter;Implémenté / non testé
+F-07;5 règles métier explicites;REGLES_METIER.md;À exécuter;Implémenté / non testé
+Q-01;Aptitude fonctionnelle;API et interface;Pytest Playwright;Non testé
+Q-02;Performance;API FastAPI;Locust 20 utilisateurs;Non testé
+Q-03;Compatibilité;Frontend React;Playwright Chromium Firefox;Non testé
+Q-04;Facilité d'utilisation;Interface responsive;Recette et accessibilité;Non testé
+Q-05;Fiabilité;Transactions SQLAlchemy;Scénarios erreur et reprise;Non testé
+Q-06;Sécurité;JWT RBAC hachage mots de passe;Bandit pip-audit OWASP ZAP;Non testé
+Q-07;Maintenabilité;Python React;Ruff couverture analyse statique;Non testé
+Q-08;Portabilité;Docker Compose;Installation sur seconde machine;Non testé

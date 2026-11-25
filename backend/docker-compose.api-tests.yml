@@ -1,0 +1,36 @@
+# Etape 3 : environnement autonome ; ne modifie PAS le docker-compose.yml principal.
+# Le nom de projet impose dans les commandes est garagepro_api_tests.
+services:
+  db_api_tests:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: garagepro_api_tests
+      POSTGRES_USER: garagepro_api_test
+      POSTGRES_PASSWORD: garagepro_api_test_only_2026
+      PGDATA: /var/lib/postgresql/data/pgdata
+    tmpfs:
+      - /var/lib/postgresql/data:rw,size=256m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U garagepro_api_test -d garagepro_api_tests"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+    networks:
+      - isolated_api_tests
+  backend_api_tests:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://garagepro_api_test:garagepro_api_test_only_2026@db_api_tests:5432/garagepro_api_tests
+      JWT_SECRET: garagepro_api_tests_only_secret_not_for_production_2026
+      SEED_DEMO: "true"
+      DEMO_PASSWORD: TestPass123!
+      CORS_ORIGINS: http://127.0.0.1:18081
+    depends_on:
+      db_api_tests:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:18081:8000"
+    networks:
+      - isolated_api_tests
+networks:
+  isolated_api_tests:

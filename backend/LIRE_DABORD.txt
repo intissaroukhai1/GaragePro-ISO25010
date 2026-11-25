@@ -1,0 +1,16 @@
+GaragePro - Serveur de test pour Postman (sans Newman)
+
+1. Extraire le ZIP directement dans la racine du projet GaragePro (au meme endroit que docker-compose.yml et les dossiers backend / frontend).
+2. Dans CMD :
+   cd /d G:\tests\GaragePro_Complet_Visibilite_Vehicules_CRUD_RDV_Statuts
+   DEMARRER_ETAPE3.cmd
+3. Verifier :
+   curl.exe http://127.0.0.1:18081/api/health
+4. Puis utiliser Postman (Desktop Agent) avec baseUrl=http://127.0.0.1:18081.
+5. Pour arreter le serveur de test : ARRETER_ETAPE3.cmd
+
+Ne pas lancer sur le port 8000 de l'application habituelle.
+Ce compose lance une base PostgreSQL de test isolee et ephemere, distincte de la base GaragePro principale.
+Si le demarrage echoue, executer :
+  docker compose -f docker-compose.api-tests.yml -p garagepro_api_tests ps -a
+  docker compose -f docker-compose.api-tests.yml -p garagepro_api_tests logs --tail=60 backend_api_tests

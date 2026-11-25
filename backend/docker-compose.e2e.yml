@@ -1,0 +1,40 @@
+# À placer à la racine de GaragePro (à côté des dossiers backend et frontend).
+# Base E2E indépendante, projet Compose explicitement nommé garagepro_e2e_tests.
+services:
+  db_e2e:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: garagepro_e2e
+      POSTGRES_USER: garagepro_e2e
+      POSTGRES_PASSWORD: e2e_password_local_only
+    volumes:
+      - garagepro_e2e_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U garagepro_e2e -d garagepro_e2e"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  backend_e2e:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://garagepro_e2e:e2e_password_local_only@db_e2e:5432/garagepro_e2e
+      JWT_SECRET: e2e-only-secret-never-use-in-production-123456
+      SEED_DEMO: "true"
+      DEMO_PASSWORD: Demo12345!
+      CORS_ORIGINS: http://127.0.0.1:13000,http://localhost:13000
+    depends_on:
+      db_e2e:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:18082:8000"
+  frontend_e2e:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://127.0.0.1:18082
+    depends_on:
+      - backend_e2e
+    ports:
+      - "127.0.0.1:13000:80"
+volumes:
+  garagepro_e2e_data:
