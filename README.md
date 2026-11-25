@@ -20,11 +20,7 @@ docker compose up --build -d
 
 Le serveur initialise les tables au démarrage. Des comptes de démonstration sont créés uniquement si la table utilisateurs est vide et `SEED_DEMO=true`.
 
-| Profil | Adresse e-mail | Mot de passe par défaut |
-| --- | --- | --- |
-| Administrateur | admin@gmail.com | Demo12345! |
-| Mécanicien | mecanicien@gmail.com | Demo12345! |
-| Client | client@gmail.com | Demo12345! |
+
 
 **Sécurité :** ces identifiants sont réservés à une machine de développement. Désactiver `SEED_DEMO`, définir des mots de passe secrets forts, un `JWT_SECRET` aléatoire et ajouter une couche HTTPS avant toute publication. Ne pas utiliser la configuration Docker d'exemple directement en production.
 
