@@ -1,4 +1,5 @@
 """Isolated test database. NEVER connects to the production Docker PostgreSQL database."""
+
 import os
 import sys
 import tempfile
